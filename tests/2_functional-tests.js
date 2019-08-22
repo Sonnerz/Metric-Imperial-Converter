@@ -40,7 +40,7 @@ suite('Functional Tests', function() {
         .end(function(err, res){
           assert.equal(res.status, 200);
           assert.equal(res.body.initNum, 32);
-          assert.equal(res.body.initUnit, 'invalid unit');
+          assert.equal(res.body.initUnit, 'Invalid unit');
           assert.equal(res.body.returnNum, '');
           assert.equal(res.body.returnUnit, '');
           done();
@@ -53,7 +53,7 @@ suite('Functional Tests', function() {
         .query({input: '3/7.2/4kg'})
         .end(function(err, res){
           assert.equal(res.status, 200);
-          assert.equal(res.body.initNum, 'invalid number');
+          assert.equal(res.body.initNum, 'Invalid number');
           assert.equal(res.body.initUnit, 'kg');
           assert.equal(res.body.returnNum, '');
           assert.equal(res.body.returnUnit, 'lbs');
@@ -67,11 +67,11 @@ suite('Functional Tests', function() {
         .query({input: '3/7.2/4kilomegagram'})
         .end(function(err, res){
           assert.equal(res.status, 200);
-          assert.equal(res.body.initNum, 'invalid number');
-          assert.equal(res.body.initUnit, 'invalid unit');
+          assert.equal(res.body.initNum, 'Invalid number');
+          assert.equal(res.body.initUnit, 'Invalid unit');
           assert.equal(res.body.returnNum, '');
           assert.equal(res.body.returnUnit, '');
-          assert.equal(res.body.string, 'invalid number and unit');          
+          assert.equal(res.body.string, 'Invalid number and unit');          
           done();
         });
       });
@@ -88,10 +88,7 @@ suite('Functional Tests', function() {
           assert.equal(res.body.returnUnit, 'lbs');
           done();
         });
-      });
-      
+      });      
     });
-
   });
-
 });

@@ -37,10 +37,9 @@
   </section>
   <div class="container">
     <h1>Metric Imperial Converter</h1>
-
-    <hr style="margin: 50px">
+    <hr style="margin: 30px">
     <div>
-      <p>g (gallons) to l (litres) and vice versa, <br>
+      <p>gal (gallons) to l (litres) and vice versa, <br>
         lbs (pounds) to kg (kilograms) and vice versa,<br>
         mi (miles) to km (kilometres) and vice versa</p>
     </div>
@@ -52,7 +51,7 @@
       <p id="result"></p>
       <code id="jsonResult"></code>
     </div>
-    <hr style="margin: 50px; margin-top: 50px">
+    <hr style="margin: 50px; margin-top: 30px">
   </div>
   <!-- Your web-app is https, so your scripts need to be too -->
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"
@@ -65,14 +64,14 @@
           url: '/api/convert',
           type: 'get',
           data: $('#convertForm').serialize(),
-          success: function (data) {
-            if (data != "Please add a value to convert") {
-              $('#result').text(data.string || data);
-              $('#jsonResult').text(JSON.stringify(data));
-            } else {
+          success: function (data) {            
+            if (data == "Please add a value to convert" || !data.string) {
               $('#result').text(data.string || data);
               $('#jsonResult').text("");
-            }
+            } else {
+              $('#result').text(data.string || data);
+              $('#jsonResult').text(JSON.stringify(data));
+            }           
           }
         });
       });
@@ -83,3 +82,4 @@
 </body>
 
 </html>
+

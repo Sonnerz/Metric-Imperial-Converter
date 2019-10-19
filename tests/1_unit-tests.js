@@ -40,9 +40,9 @@ suite('Unit Tests', function(){
       done();
     });
     
-    test('Invalid Input (double fraction)', function(done) {
+    test('invalid Input (double fraction)', function(done) {
       var input = '3/7.2/4L';
-      assert.equal(convertHandler.getNum(input),'Invalid number');
+      assert.equal(convertHandler.getNum(input),'invalid number');
       done();
     });
     
@@ -66,7 +66,7 @@ suite('Unit Tests', function(){
     
     test('Unknown Unit Input', function(done) {
       var input = 'miles';
-      assert.equal(convertHandler.getUnit(input),'Invalid unit');
+      assert.equal(convertHandler.getUnit(input),'invalid unit');
       done();
     });  
     
@@ -89,7 +89,7 @@ suite('Unit Tests', function(){
     
     test('For Each Valid Unit Inputs', function(done) {
       var input = ['gal','l','lbs','kg','mi','km'];
-      var expect = ['gallons','litres','pounds','kilograms','miles','kilometres'];
+      var expect = ['gallons','liters','pounds','kilograms','miles','kilometers'];
       input.forEach(function(ele, i) {
         assert.equal(convertHandler.spellOutUnit(ele), expect[i]);        
       });

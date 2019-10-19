@@ -15,19 +15,19 @@ function ConvertHandler() {
     // if input is != 1 or if it's a fraction then eval the fraction else return the input
     input = input!=1 && input.indexOf('/') > -1 ? +(input.substr(0, input.indexOf('/'))) / +(input.substr(input.indexOf('/') + 1)) : +input;
     // if the input is not a number then convert it and return else 'invalid number'
-    return !isNaN(+input) ? +input : 'Invalid number'; 
+    return !isNaN(+input) ? +input : 'invalid number'; 
 
   };          
   
   this.getUnit = function(input) {
     var unitRegex = /^gal$|^[l]*l[l]*$|^lbs$|^kg$|^mi$|^km$/i// match: gal,lbs,kg,mi,km,l
     input = input.match(/[a-z]/gi).join(""); // ["m", "i"] to mi
-    return unitRegex.test(input) ? input : 'Invalid unit'; 
+    return unitRegex.test(input) ? input : 'invalid unit'; 
   };
   
   this.getReturnUnit = function(initUnit) {
     var result;
-    if(initUnit != 'Invalid unit'){
+    if(initUnit != 'invalid unit'){
        switch (initUnit.toLowerCase()) {
         case "gal":          
           return result = "l";
@@ -53,11 +53,11 @@ function ConvertHandler() {
   this.spellOutUnit = function(unit) {
     const fullUnitName = {
       gal: "gallons",
-      l: "litres",
+      l: "liters",
       lbs: "pounds",
       kg: "kilograms",
       mi: "miles",
-      km: "kilometres"
+      km: "kilometers"
     }
     return fullUnitName[unit];
   };
@@ -67,7 +67,7 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     var result;
-    if(initNum != 'Invalid number' && initUnit != 'Invalid unit') {
+    if(initNum != 'invalid number' && initUnit != 'invalid unit') {
        switch (initUnit.toLowerCase()) {
         case "gal":
           //convert 'gal' to 'L'
@@ -103,11 +103,11 @@ function ConvertHandler() {
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     var result;
     
-    if(initUnit == 'Invalid unit' && initNum == 'Invalid number') {
-      result = "Invalid number and unit" 
-    } else if(initUnit == 'Invalid unit' && initNum != 'Invalid number') {
-      result = `${initUnit}`     
-    } else if(initNum == 'Invalid number' && initUnit != 'Invalid unit') {
+    if(initUnit == 'invalid unit' && initNum == 'invalid number') {
+      result = "invalid number and unit" 
+    } else if(initUnit == 'invalid unit' && initNum != 'invalid number') {
+      result = `'${initUnit}'`     
+    } else if(initNum == 'invalid number' && initUnit != 'invalid unit') {
       result = `${initNum}`   
     } else {
       result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`
